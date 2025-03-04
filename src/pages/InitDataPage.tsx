@@ -89,7 +89,7 @@ export const InitDataPage: FC = () => {
 
     const { initDataRaw } = retrieveLaunchParams();
 
-    fetch('https://user8416411-3pdtfung.tunnel.vk-apps.com/', {
+    fetch('https://user8416411-fwflmit3.tunnel.vk-apps.com', {
       method: 'GET',
       headers: {
         Authorization: `tma ${initDataRaw}`
