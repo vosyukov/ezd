@@ -20,7 +20,8 @@ export default defineConfig({
   publicDir: './public',
   server: {
     // Exposes your dev server and makes it accessible for the devices in the same network.
-    host: true,
+    host: false,
+    port: 3001
   },
 });
 

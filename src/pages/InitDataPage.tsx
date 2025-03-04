@@ -1,7 +1,7 @@
 import { type FC, useMemo } from 'react';
 import { initData, type User, useSignal } from '@telegram-apps/sdk-react';
-import { List, Placeholder } from '@telegram-apps/telegram-ui';
-
+import {Button, List, Placeholder} from '@telegram-apps/telegram-ui';
+import { retrieveLaunchParams } from '@telegram-apps/sdk';
 import { DisplayData, type DisplayDataRow } from '@/components/DisplayData/DisplayData.tsx';
 import { Page } from '@/components/Page.tsx';
 
@@ -84,9 +84,23 @@ export const InitDataPage: FC = () => {
     ];
   }, [initData]);
 
+  const onClick = () =>{
+
+
+    const { initDataRaw } = retrieveLaunchParams();
+
+    fetch('https://user8416411-3pdtfung.tunnel.vk-apps.com/', {
+      method: 'GET',
+      headers: {
+        Authorization: `tma ${initDataRaw}`
+      },
+    });
+  }
+
   if (!initDataRows) {
     return (
       <Page>
+
         <Placeholder
           header="Oops"
           description="Application was launched with missing init data"
@@ -102,6 +116,7 @@ export const InitDataPage: FC = () => {
   }
   return (
     <Page>
+      <Button onClick={onClick}>qweqwe</Button>
       <List>
         <DisplayData header={'Init Data'} rows={initDataRows}/>
         {userRows && <DisplayData header={'User'} rows={userRows}/>}
