@@ -84,17 +84,21 @@ export const InitDataPage: FC = () => {
     ];
   }, [initData]);
 
-  const onClick = () =>{
+  const onClick = async () =>{
 
 
     const { initDataRaw } = retrieveLaunchParams();
 
-    fetch('https://user8416411-fwflmit3.tunnel.vk-apps.com', {
-      method: 'GET',
+    const re = await fetch('https://user8416411-xushvgmy.tunnel.vk-apps.com/auth/login', {
+      method: 'POST',
       headers: {
         Authorization: `tma ${initDataRaw}`
       },
     });
+
+    const {jwt} = await re.json()
+
+    localStorage.setItem('jwt', jwt);
   }
 
   if (!initDataRows) {
@@ -116,7 +120,7 @@ export const InitDataPage: FC = () => {
   }
   return (
     <Page>
-      <Button onClick={onClick}>qweqwe</Button>
+      <Button onClick={onClick}>{ localStorage.getItem('jwt')}</Button>
       <List>
         <DisplayData header={'Init Data'} rows={initDataRows}/>
         {userRows && <DisplayData header={'User'} rows={userRows}/>}
