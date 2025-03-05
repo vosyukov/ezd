@@ -10,3 +10,14 @@ export async function login(token: string): Promise<string> {
 
     return jwt
 }
+
+export async function test(): Promise<string> {
+    const data= await fetch(`${BASE_URL}/test`, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwt')    }`
+        },
+    }).then(res => res.text());
+
+    return data
+}
