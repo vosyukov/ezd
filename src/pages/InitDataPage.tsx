@@ -4,6 +4,7 @@ import {Button, List, Placeholder} from '@telegram-apps/telegram-ui';
 import { retrieveLaunchParams } from '@telegram-apps/sdk';
 import { DisplayData, type DisplayDataRow } from '@/components/DisplayData/DisplayData.tsx';
 import { Page } from '@/components/Page.tsx';
+import {ProtectedPage} from "@/components/ProtectedPage.tsx";
 
 function getUserRows(user: User): DisplayDataRow[] {
   return [
@@ -119,7 +120,7 @@ export const InitDataPage: FC = () => {
     );
   }
   return (
-    <Page>
+    <ProtectedPage>
       <Button onClick={onClick}>{ localStorage.getItem('jwt')}</Button>
       <List>
         <DisplayData header={'Init Data'} rows={initDataRows}/>
@@ -127,6 +128,6 @@ export const InitDataPage: FC = () => {
         {receiverRows && <DisplayData header={'Receiver'} rows={receiverRows}/>}
         {chatRows && <DisplayData header={'Chat'} rows={chatRows}/>}
       </List>
-    </Page>
+    </ProtectedPage>
   );
 };

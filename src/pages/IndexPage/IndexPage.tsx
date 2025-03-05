@@ -1,43 +1,48 @@
-import { Section, Cell, Image, List } from '@telegram-apps/telegram-ui';
+import {Section, Cell, List, Input, IconContainer} from '@telegram-apps/telegram-ui';
 import type { FC } from 'react';
 
-import { Link } from '@/components/Link/Link.tsx';
-import { Page } from '@/components/Page.tsx';
-
-import tonSvg from './ton.svg';
+import {ProtectedPage} from "@/components/ProtectedPage.tsx";
+import {Icon28Stats} from "@telegram-apps/telegram-ui/dist/icons/28/stats";
+import {Icon28Devices} from "@telegram-apps/telegram-ui/dist/icons/28/devices";
+import {Icon28Chat} from "@telegram-apps/telegram-ui/dist/icons/28/chat";
 
 export const IndexPage: FC = () => {
   return (
-    <Page back={false}>
-      <List>
+    <ProtectedPage back={false}>
+      <List
+          style={{
+            background: 'var(--tgui--secondary_bg_color)',
+            // padding: '10px',
+          }}
+      >
         <Section
-          header="Features"
-          footer="You can use these pages to learn more about features, provided by Telegram Mini Apps and other useful projects"
+            footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
+            header="Main Settings"
         >
-          <Link to="/ton-connect">
-            <Cell
-              before={<Image src={tonSvg} style={{ backgroundColor: '#007AFF' }}/>}
-              subtitle="Connect your TON wallet"
-            >
-              TON Connect
-            </Cell>
-          </Link>
+          <Cell before={<IconContainer><Icon28Chat /></IconContainer>}>
+            Chat Settings
+          </Cell>
+          <Cell before={<IconContainer><Icon28Devices /></IconContainer>}>
+            Data and Storage
+          </Cell>
+          <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
+            Devices
+          </Cell>
         </Section>
         <Section
-          header="Application Launch Data"
-          footer="These pages help developer to learn more about current launch information"
+            footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
+            header="Personal Information"
         >
-          <Link to="/init-data">
-            <Cell subtitle="User data, chat information, technical data">Init Data</Cell>
-          </Link>
-          <Link to="/launch-params">
-            <Cell subtitle="Platform identifier, Mini Apps version, etc.">Launch Parameters</Cell>
-          </Link>
-          <Link to="/theme-params">
-            <Cell subtitle="Telegram application palette information">Theme Parameters</Cell>
-          </Link>
+          <Input
+              header="First name"
+              placeholder="21 y.o. designer from San Francisco"
+          />
+          <Input
+              header="Last name"
+              placeholder="21 y.o. designer from San Francisco"
+          />
         </Section>
       </List>
-    </Page>
+      </ProtectedPage>
   );
 };
