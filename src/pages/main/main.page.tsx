@@ -26,7 +26,7 @@ export const MainPage: FC = () => {
                     // padding: '10px',
                 }}
             >
-                <Section header="Моя АТК">
+                <Section header="Моя ТК">
                     <Link to="/my-company">
                         <Cell
                             before={
