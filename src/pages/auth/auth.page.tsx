@@ -8,15 +8,15 @@ import { login } from '@/api/auth.ts';
 import { useNavigate } from 'react-router-dom';
 
 export const AuthPage: FC = () => {
-    const { initDataRaw = '' } = retrieveLaunchParams();
     const mutation = useMutation({
-        mutationFn: () => login(initDataRaw),
+        mutationFn: (val: string) => login(val),
     });
 
     const navigate = useNavigate();
 
     const onClick = async () => {
-        const jwt = await mutation.mutateAsync();
+        const { initDataRaw = '' } = retrieveLaunchParams();
+        const jwt = await mutation.mutateAsync(initDataRaw);
         if (jwt) {
             localStorage.setItem('jwt', jwt);
             navigate('/');
@@ -26,9 +26,9 @@ export const AuthPage: FC = () => {
 
     return (
         <Page>
-            <Button onClick={onClick}>Войти</Button>
-            {/*{isLoading && <Spinner size="l" />}*/}
-            {/*{isSuccess && <Navigate to="/" replace/>}*/}
+            <Button onClick={onClick} disabled={mutation.isPending}>
+                Войти
+            </Button>
         </Page>
     );
 };
