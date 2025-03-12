@@ -1,27 +1,30 @@
-
-import { Spinner} from '@telegram-apps/telegram-ui';
+import { Button } from '@telegram-apps/telegram-ui';
 import type { FC } from 'react';
 
-
 import { Page } from '@/components/Page.tsx';
-import {useQuery} from "@tanstack/react-query";
-import {retrieveLaunchParams} from "@telegram-apps/sdk";
-import {login} from "@/api.ts";
-import {Navigate} from "react-router-dom";
+import { useMutation } from '@tanstack/react-query';
+import { retrieveLaunchParams } from '@telegram-apps/sdk';
+import { login } from '@/api/auth.ts';
 
 export const AuthPage: FC = () => {
-
     const { initDataRaw = '' } = retrieveLaunchParams();
-    const {isLoading, isSuccess, data} = useQuery({ queryKey: ['todos'], queryFn: () => login(initDataRaw) })
+    const mutation = useMutation({
+        mutationFn: () => login(initDataRaw),
+    });
 
-    if(isSuccess){
-        localStorage.setItem('jwt', data)
-    }
+    const onClick = async () => {
+        const jwt = await mutation.mutateAsync();
+        if (jwt) {
+            localStorage.setItem('jwt', jwt);
+            // {isSuccess && <Navigate to="/" replace/>}
+        }
+    };
 
     return (
         <Page>
-            {isLoading && <Spinner size="l" />}
-            {isSuccess && <Navigate to="/" replace/>}
+            <Button onClick={onClick}>Войти</Button>
+            {/*{isLoading && <Spinner size="l" />}*/}
+            {/*{isSuccess && <Navigate to="/" replace/>}*/}
         </Page>
     );
 };
