@@ -6,6 +6,7 @@ import { useMutation } from '@tanstack/react-query';
 import { retrieveLaunchParams } from '@telegram-apps/sdk';
 import { login } from '@/api/auth.ts';
 import { useNavigate } from 'react-router-dom';
+import { saveJwt } from '@/jwt.storage.ts';
 
 export const AuthPage: FC = () => {
     const mutation = useMutation({
@@ -18,9 +19,8 @@ export const AuthPage: FC = () => {
         const { initDataRaw = '' } = retrieveLaunchParams();
         const jwt = await mutation.mutateAsync(initDataRaw);
         if (jwt) {
-            localStorage.setItem('jwt', jwt);
+            saveJwt(jwt);
             navigate('/');
-            // {isSuccess && <Navigate to="/" replace/>}
         }
     };
 

@@ -1,6 +1,6 @@
 import type { ComponentType, JSX } from 'react';
 
-import { IndexPage } from '@/pages/IndexPage/IndexPage';
+import { MainPage } from '@/pages/main/main.page.tsx';
 import { InitDataPage } from '@/pages/InitDataPage.tsx';
 import { LaunchParamsPage } from '@/pages/LaunchParamsPage.tsx';
 import { ThemeParamsPage } from '@/pages/ThemeParamsPage.tsx';
@@ -17,7 +17,7 @@ interface Route {
 }
 
 export const routes: Route[] = [
-    { path: '/', Component: IndexPage },
+    { path: '/', Component: MainPage },
     { path: '/auth', Component: AuthPage },
     { path: '/my-company', Component: MyCompanyPage },
     { path: '/add-company', Component: AddCompanyPage },

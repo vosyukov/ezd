@@ -9,7 +9,7 @@ import { Link } from '@/components/Link/Link.tsx';
 import { removeJwt } from '@/jwt.storage.ts';
 import { useNavigate } from 'react-router-dom';
 
-export const IndexPage: FC = () => {
+export const MainPage: FC = () => {
     const navigate = useNavigate();
 
     const onClick = () => {
@@ -17,6 +17,7 @@ export const IndexPage: FC = () => {
 
         navigate('/auth');
     };
+
     return (
         <ProtectedPage back={false}>
             <List
@@ -25,11 +26,7 @@ export const IndexPage: FC = () => {
                     // padding: '10px',
                 }}
             >
-                <Section
-                    footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
-                    header="Main Settings"
-                >
-                    {' '}
+                <Section header="Моя АТК">
                     <Link to="/my-company">
                         <Cell
                             before={
@@ -60,11 +57,27 @@ export const IndexPage: FC = () => {
                         Водители
                     </Cell>
                 </Section>
-                <Section
-                    footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
-                    header="Main Settings"
-                >
-                    {' '}
+                <Section header="Полезные сервисы">
+                    <Cell
+                        before={
+                            <IconContainer>
+                                <Icon28Chat />
+                            </IconContainer>
+                        }
+                    >
+                        Проверка водителя
+                    </Cell>
+                    <Cell
+                        before={
+                            <IconContainer>
+                                <Icon28Chat />
+                            </IconContainer>
+                        }
+                    >
+                        Проверка компании
+                    </Cell>
+                </Section>
+                <Section>
                     <Cell
                         onClick={onClick}
                         before={
