@@ -25,7 +25,7 @@ export const AuthPage: FC = () => {
     };
 
     return (
-        <Page>
+        <Page back={false}>
             <Button onClick={onClick} disabled={mutation.isPending}>
                 Войти
             </Button>
