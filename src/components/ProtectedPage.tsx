@@ -1,6 +1,7 @@
 import { Navigate, useNavigate } from 'react-router-dom';
 import { backButton } from '@telegram-apps/sdk-react';
 import { PropsWithChildren, useEffect } from 'react';
+import { getJwt } from '@/jwt.storage.ts';
 
 export function ProtectedPage({
     children,
@@ -23,7 +24,7 @@ export function ProtectedPage({
         backButton.hide();
     }, [back]);
 
-    if (!localStorage.getItem('jwt')) {
+    if (!getJwt()) {
         return <Navigate to="/auth" replace />;
     }
 

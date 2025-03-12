@@ -12,7 +12,7 @@ export function Page({
     back?: boolean;
 }>) {
     const navigate = useNavigate();
-    console.log(navigate);
+
     useEffect(() => {
         if (back) {
             backButton.show();
