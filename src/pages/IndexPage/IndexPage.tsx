@@ -6,8 +6,17 @@ import { Icon28Stats } from '@telegram-apps/telegram-ui/dist/icons/28/stats';
 import { Icon28Devices } from '@telegram-apps/telegram-ui/dist/icons/28/devices';
 import { Icon28Chat } from '@telegram-apps/telegram-ui/dist/icons/28/chat';
 import { Link } from '@/components/Link/Link.tsx';
+import { removeJwt } from '@/jwt.storage.ts';
+import { useNavigate } from 'react-router-dom';
 
 export const IndexPage: FC = () => {
+    const navigate = useNavigate();
+
+    const onClick = () => {
+        removeJwt();
+
+        navigate('/auth');
+    };
     return (
         <ProtectedPage back={false}>
             <List
@@ -56,17 +65,16 @@ export const IndexPage: FC = () => {
                     header="Main Settings"
                 >
                     {' '}
-                    <Link to="/my-company">
-                        <Cell
-                            before={
-                                <IconContainer>
-                                    <Icon28Chat />
-                                </IconContainer>
-                            }
-                        >
-                            Выйти
-                        </Cell>
-                    </Link>
+                    <Cell
+                        onClick={onClick}
+                        before={
+                            <IconContainer>
+                                <Icon28Chat />
+                            </IconContainer>
+                        }
+                    >
+                        Выйти
+                    </Cell>
                 </Section>
             </List>
         </ProtectedPage>
