@@ -8,6 +8,8 @@ import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
 import { AuthPage } from '@/pages/auth/auth.page.tsx';
 import { MyCompanyPage } from '@/pages/my-company/my-company.page.tsx';
 import { AddCompanyPage } from '@/pages/add-company/add-company.page.tsx';
+import { MyDriverPage } from '@/pages/my-driver/my-driver.page.tsx';
+import { AddDriverPage } from '@/pages/add-driver/add-driver.page.tsx';
 
 interface Route {
     path: string;
@@ -19,8 +21,10 @@ interface Route {
 export const routes: Route[] = [
     { path: '/', Component: MainPage },
     { path: '/auth', Component: AuthPage },
+    { path: '/my-driver', Component: MyDriverPage },
     { path: '/my-company', Component: MyCompanyPage },
     { path: '/add-company', Component: AddCompanyPage },
+    { path: '/add-driver', Component: AddDriverPage },
     { path: '/init-data', Component: InitDataPage, title: 'Init Data' },
     { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
     {

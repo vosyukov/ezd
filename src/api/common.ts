@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://user8416411-2hlxdlmu.tunnel.vk-apps.com';
+export const BASE_URL = 'https://user8416411-74ij3wb3.tunnel.vk-apps.com';
 
 export async function request<T>(path: string, data: object = {}): Promise<T> {
     const result = await fetch(`${BASE_URL}/${path}`, {

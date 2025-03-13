@@ -47,15 +47,17 @@ export const MainPage: FC = () => {
                     >
                         Автопарк
                     </Cell>
-                    <Cell
-                        before={
-                            <IconContainer>
-                                <Icon28Stats />
-                            </IconContainer>
-                        }
-                    >
-                        Водители
-                    </Cell>
+                    <Link to="/my-driver">
+                        <Cell
+                            before={
+                                <IconContainer>
+                                    <Icon28Stats />
+                                </IconContainer>
+                            }
+                        >
+                            Водители
+                        </Cell>
+                    </Link>
                 </Section>
                 <Section header="Полезные сервисы">
                     <Cell
