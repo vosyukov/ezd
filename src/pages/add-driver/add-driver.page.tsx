@@ -18,7 +18,7 @@ export const AddDriverPage: FC = () => {
 
     const navigate = useNavigate(); // Инициализируем useNavigate
 
-    const { data, isLoading } = useQuery({
+    const { data } = useQuery({
         queryKey: ['company_list'],
         queryFn: () => getCompanyList(),
     });
