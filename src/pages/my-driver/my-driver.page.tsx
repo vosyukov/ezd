@@ -29,17 +29,18 @@ export const MyDriverPage: FC = () => {
                 header="Main Settings"
             >
                 {data.map((item) => (
-                    <Cell
-                        key={item.id}
-                        before={
-                            <IconContainer>
-                                {' '}
-                                <Icon28Stats />
-                            </IconContainer>
-                        }
-                    >
-                        {item.name}
-                    </Cell>
+                    <Link key={item.id} to={'/in-progress'}>
+                        <Cell
+                            key={item.id}
+                            before={
+                                <IconContainer>
+                                    <Icon28Stats />
+                                </IconContainer>
+                            }
+                        >
+                            {item.name}
+                        </Cell>
+                    </Link>
                 ))}
             </Section>
             <Link to="/add-driver">
