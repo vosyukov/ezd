@@ -28,17 +28,18 @@ export const MyCompanyPage: FC = () => {
                 header="Main Settings"
             >
                 {data.map((item) => (
-                    <Cell
-                        key={item.id}
-                        before={
-                            <IconContainer>
-                                {' '}
-                                <Icon28Stats />
-                            </IconContainer>
-                        }
-                    >
-                        {item.name}
-                    </Cell>
+                    <Link key={item.id} to={`/company-cart/${item.id}`}>
+                        <Cell
+                            key={item.id}
+                            before={
+                                <IconContainer>
+                                    <Icon28Stats />
+                                </IconContainer>
+                            }
+                        >
+                            {item.name}
+                        </Cell>
+                    </Link>
                 ))}
             </Section>
             <Link to="/add-company">
