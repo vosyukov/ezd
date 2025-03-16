@@ -29,7 +29,7 @@ export const MyDriverPage: FC = () => {
                 header="Main Settings"
             >
                 {data.map((item) => (
-                    <Link key={item.id} to={'/in-progress'}>
+                    <Link key={item.id} to={`/driver-cart/${item.id}`}>
                         <Cell
                             key={item.id}
                             before={

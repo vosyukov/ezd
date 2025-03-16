@@ -12,6 +12,7 @@ import { MyDriverPage } from '@/pages/my-driver/my-driver.page.tsx';
 import { AddDriverPage } from '@/pages/add-driver/add-driver.page.tsx';
 import { CompanyCartPage } from '@/pages/company-cart/company-cart.page.tsx';
 import { InProgressPage } from '@/pages/in-progress/in-progress.page.tsx';
+import { DriverCartPage } from '@/pages/driver-cart/driver-cart.page.tsx';
 
 interface Route {
     path: string;
@@ -24,6 +25,7 @@ export const routes: Route[] = [
     { path: '/', Component: MainPage },
     { path: '/auth', Component: AuthPage },
     { path: '/company-cart/:companyId', Component: CompanyCartPage },
+    { path: '/driver-cart/:driverId', Component: DriverCartPage },
     { path: '/my-driver', Component: MyDriverPage },
     { path: '/my-company', Component: MyCompanyPage },
     { path: '/add-company', Component: AddCompanyPage },
