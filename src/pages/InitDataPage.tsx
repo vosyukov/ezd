@@ -71,18 +71,18 @@ export const InitDataPage: FC = () => {
     }, [initData]);
 
     const onClick = async () => {
-        const { initDataRaw } = retrieveLaunchParams();
-
-        const re = await fetch('https://user8416411-xushvgmy.tunnel.vk-apps.com/auth/login', {
-            method: 'POST',
-            headers: {
-                Authorization: `tma ${initDataRaw}`,
-            },
-        });
-
-        const { jwt } = await re.json();
-
-        localStorage.setItem('jwt', jwt);
+        // const { initDataRaw } = retrieveLaunchParams();
+        //
+        // const re = await fetch('https://user8416411-xushvgmy.tunnel.vk-apps.com/auth/login', {
+        //     method: 'POST',
+        //     headers: {
+        //         Authorization: `tma ${initDataRaw}`,
+        //     },
+        // });
+        //
+        // const { jwt } = await re.json();
+        //
+        // localStorage.setItem('jwt', jwt);
     };
 
     if (!initDataRows) {
