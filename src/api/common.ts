@@ -1,7 +1,5 @@
-export const BASE_URL = 'https://user8416411-mncs2gkn.tunnel.vk-apps.com';
-
 export async function request<T>(path: string, data: object = {}): Promise<T> {
-    const result = await fetch(`${BASE_URL}/${path}`, {
+    const result = await fetch(`${import.meta.env.VITE_API_URL}/${path}`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${localStorage.getItem('jwt')}`,

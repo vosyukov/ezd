@@ -1,7 +1,5 @@
-import { BASE_URL } from '@/api/common.ts';
-
 export async function login(token: string): Promise<string> {
-    const { jwt } = await fetch(`${BASE_URL}/auth/login`, {
+    const { jwt } = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
         method: 'POST',
         headers: {
             Authorization: `tma ${token}`,
