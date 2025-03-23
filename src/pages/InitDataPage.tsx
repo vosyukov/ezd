@@ -1,7 +1,7 @@
 import { type FC, useMemo } from 'react';
 import { initData, type User, useSignal } from '@telegram-apps/sdk-react';
 import { Button, List, Placeholder } from '@telegram-apps/telegram-ui';
-import { retrieveLaunchParams } from '@telegram-apps/sdk';
+// import { retrieveLaunchParams } from '@telegram-apps/sdk';
 import { DisplayData, type DisplayDataRow } from '@/components/DisplayData/DisplayData.tsx';
 import { Page } from '@/components/Page.tsx';
 import { ProtectedPage } from '@/components/ProtectedPage.tsx';
