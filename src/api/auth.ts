@@ -1,5 +1,5 @@
 export async function login(token: string): Promise<string> {
-    const { jwt } = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
+    const { jwt } = await fetch(`${import.meta.env.VITE_API_URL}/auth/tma`, {
         method: 'POST',
         headers: {
             Authorization: `tma ${token}`,
