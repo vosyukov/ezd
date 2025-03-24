@@ -60,13 +60,13 @@ export const AddDriverPage: FC = () => {
                         background: 'var(--tgui--secondary_bg_color)',
                     }}
                 >
-                    <Select header="Select">{data?.map((item) => <option>{item.name}</option>)}</Select>
+                    <Select header="Организация">{data?.map((item) => <option key={item.id}>{item.name}</option>)}</Select>
                     <Input
                         name="inn"
                         required
                         minLength={10}
                         maxLength={12}
-                        header="ИНН"
+                        header="ИНН сотрудника"
                         type={'number'}
                         placeholder="Введите ИНН"
                         value={inn}
@@ -82,7 +82,7 @@ export const AddDriverPage: FC = () => {
                         required
                         minLength={2}
                         maxLength={12}
-                        header="Имя"
+                        header="Имя сотрудника"
                         type={'text'}
                         placeholder="Введите имя"
                         value={name}
@@ -98,7 +98,7 @@ export const AddDriverPage: FC = () => {
                         required
                         minLength={2}
                         maxLength={12}
-                        header="Фамилия"
+                        header="Фамилия сотрудника"
                         type={'text'}
                         placeholder="Введите фамилию"
                         value={surname}
@@ -112,7 +112,7 @@ export const AddDriverPage: FC = () => {
                     {errorMessage && <div style={{ color: 'red', marginTop: '5px' }}>{errorMessage}</div>}
 
                     <Button mode="filled" size="s" type="submit" disabled={mutation.isPending}>
-                        {mutation.isPending ? 'Отправка...' : 'Отправить заявку'}
+                        {mutation.isPending ? 'Отправка...' : 'Добавить'}
                     </Button>
                 </List>
             </form>

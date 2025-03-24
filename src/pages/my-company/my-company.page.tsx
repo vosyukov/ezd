@@ -1,4 +1,4 @@
-import { Button, Cell, IconContainer, Section, Spinner } from '@telegram-apps/telegram-ui';
+import { Button, Cell, IconContainer, Placeholder, Section, Spinner, Text } from '@telegram-apps/telegram-ui';
 import type { FC } from 'react';
 import { Link } from '@/components/Link/Link.tsx';
 
@@ -23,30 +23,45 @@ export const MyCompanyPage: FC = () => {
 
     return (
         <ProtectedPage back={true}>
-            <Section
-                footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
-                header="Main Settings"
-            >
-                {data.map((item) => (
-                    <Link key={item.id} to={`/company-cart/${item.id}`}>
-                        <Cell
-                            key={item.id}
-                            before={
-                                <IconContainer>
-                                    <Icon28Stats />
-                                </IconContainer>
-                            }
-                        >
-                            {item.name}
-                        </Cell>
+            {data.length === 0 && (
+                <Placeholder
+                    description={
+                        <Link to="/add-company">
+                            <Button mode="filled" size="s">
+                                Добавить
+                            </Button>
+                        </Link>
+                    }
+                >
+                    <Text>На данный момент у вас не добавлено ни одной компании. Добавьте новую компанию</Text>
+                </Placeholder>
+            )}
+            {data.length > 0 && (
+                <Section
+                    footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
+                    header="Main Settings"
+                >
+                    {data.map((item) => (
+                        <Link key={item.id} to={`/company-cart/${item.id}`}>
+                            <Cell
+                                key={item.id}
+                                before={
+                                    <IconContainer>
+                                        <Icon28Stats />
+                                    </IconContainer>
+                                }
+                            >
+                                {item.name}
+                            </Cell>
+                        </Link>
+                    ))}
+                    <Link to="/add-company">
+                        <Button mode="filled" size="s">
+                            Добавить компанию
+                        </Button>
                     </Link>
-                ))}
-            </Section>
-            <Link to="/add-company">
-                <Button mode="filled" size="s">
-                    Добавить компанию
-                </Button>
-            </Link>
+                </Section>
+            )}
         </ProtectedPage>
     );
 };

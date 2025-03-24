@@ -1,12 +1,13 @@
 import { Button, Input, List } from '@telegram-apps/telegram-ui';
-import { useState } from 'react';
 import type { FC } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Импорт useNavigate
-
 import { ProtectedPage } from '@/components/ProtectedPage.tsx';
 import { useMutation } from '@tanstack/react-query';
 
 import { addCompany } from '@/api/company.ts';
+import { ApiError, BadRequest } from '@/api/common.ts';
+import { ErrorCode } from '@/api/error-codes.ts';
 
 export const AddCompanyPage: FC = () => {
     const [inn, setInn] = useState('');
@@ -24,9 +25,13 @@ export const AddCompanyPage: FC = () => {
             setErrorMessage('');
             navigate('/my-company'); // Редирект на страницу успеха
         },
-        onError: (error: any) => {
-            setStatus('error');
-            setErrorMessage(error.message || 'Произошла ошибка');
+        onError: (error: ApiError) => {
+            if (error instanceof BadRequest) {
+                if (error.code === ErrorCode.COMPANY_NOT_FOUND) {
+                    setErrorMessage(`Компании с ИНН ${inn} не найдено`);
+                    setStatus('error');
+                }
+            }
         },
     });
 

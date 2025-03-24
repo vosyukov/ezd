@@ -24,9 +24,7 @@ export const DriverCartPage: FC = () => {
     }
     return (
         <ProtectedPage back={true}>
-            <Placeholder description={data.inn} header={data.name}>
-                <img alt="Telegram sticker" className="blt0jZBzpxuR4oDhJc8s" src="https://xelene.me/telegram.gif" />
-            </Placeholder>
+            <Placeholder header={data.name}></Placeholder>
             <SegmentedControl>
                 <SegmentedControlItem onClick={function noRefCheck() {}} selected>
                     Информация

@@ -8,6 +8,6 @@ export async function getDriverList(): Promise<{ id: string; inn: string; name: 
     return request('driver.getList');
 }
 
-export async function addDriver(options: { inn: string }): Promise<void> {
+export async function addDriver(options: { inn: string }) {
     return request('driver.add', options);
 }
